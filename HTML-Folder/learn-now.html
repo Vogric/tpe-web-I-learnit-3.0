@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnIT - Learn now</title>
+    <link rel="stylesheet" href="../CSS-Folder/home.css">
+    <link rel="stylesheet" href="../CSS-Folder/learn-now.css">
+    <script src="../JS-Folder/captcha.js"></script>
+    <script src="../JS-Folder/deployment-menu.js"></script>
+    <link rel="icon" href="../Images/logo-learnit.png" type="image/png">
+</head>
+
+<body>
+    <div class="gral-container">
+        <header class="header">
+            <figure class="logo"><img src="../Images/logo-learnit.png" alt=""></figure>
+            <nav>
+                <button id="menu-button" class="menu-button"><img src="../Images/icons/menu-icon.png"
+                        alt="menu-icon"></button>
+                <ul id="menu-bar" class="hide-bar">
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="../HTML-Folder/courses.html">Courses</a>
+                    </li>
+                    <li>
+                        <a href="../HTML-Folder/learn-now.html">Learn now</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="learn-now-main">
+            <h1>Sign up for <span>courses</span></h1>
+            <section class="inscription">
+                <div class="checkbox-courses">
+                    <ul>
+                        <h2>Select course:</h2>
+                        <li><input type="checkbox" name="preProgramming" value="">
+                            <label for="course">Pre-Programming</label>
+                        </li>
+                        <li><input type="checkbox" name="buildingYourFirstWebsite" value="">
+                            <label for="course">Building your first Website</label>
+                        </li>
+                        <li> <input type="checkbox" name="interpersonalSkillsAtWork" value="">
+                            <label for="course">Interpersonal Skills at Work</label>
+                        </li>
+                        <li><input type="checkbox" name="frontEndFrameworks" value="">
+                            <label for="course">Front-End Frameworks</label>
+                        </li>
+                        <li><input type="checkbox" name="qualityAssuranceFundamentals" value="">
+                            <label for="course">Quality Assurance Fundamentals</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="firstStepsOnBigData" value="">
+                            <label for="course">First steps on Big Data</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="introductionToCloudComputing" value="">
+                            <label for="course">Introduction to Cloud Computing</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="cyberSecurityForBegginers" value="">
+                            <label for="course">CyberSecurity for Begginers</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form">
+                    <form>
+                        <h2>Personal information</h2>
+
+                        <label for="fullname">Full name</label>
+                        <input type="text" name="fullname" value="" placeholder="Full name" required>
+
+                        <label for="fullname">Birthdate</label>
+                        <input type="date" name="birthdate" max="2020-07-05" value="" required>
+
+                        <label for="email">Email</label>
+                        <input type="email" name="email" value="" placeholder="example@learnit.com" required>
+
+                        <label for="phonenumber">Phone number</label>
+                        <input type="tel" name="phonenumber" value="" placeholder="+542494657666" required>
+
+                        <label for="address">Address</label>
+                        <input type="text" name="address" value="" placeholder="742 Evergreen Terrace" required>
+
+                        <label for="comment">If you want, tell us something</label>
+                        <textarea type="text" name="comment" rows="8" cols="40" placeholder="Write here..."></textarea>
+
+                        <label for="payment">Payment Method</label>
+                        <select name="payment">
+                            <option value="paypal">
+                                <label for="payment">Paypal</label>
+                            </option>
+                            <option value="debitcard">
+                                <label for="payment">Debit Card</label>
+                            </option>
+                            <option value="creditcard">
+                                <label for="payment">Credit Card</label>
+                            </option>
+                            <option value="bank-transfer">
+                                <label for="payment">Bank transfer</label>
+                            </option>
+                            <option value="secure-online-payments">
+                                <label for="payment">Secure Online Payments</label>
+                            </option>
+                        </select>
+                        <section class="form-validation">
+                            <h2>Form validation</h2>
+                            <label for="captcha">Write the following number</label>
+                            <h2 id="captcha" class="captcha"></h2>
+                            <input type="text" id="number-user" name="number-user" value=""
+                                placeholder="Enter the number" required>
+                            <input id="button-check" type="button" value="Check">
+                            <p id="validation">Validation:</p>
+
+                            <input id="register" class="register" type="submit" value="Register" />
+                        </section>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <figure class="logos">
+                <figure class="logo-learnit">
+                    <img src="../Images/logo-learnit.png" alt="logo-learnit">
+                </figure>
+                <figure class="socials-icons">
+                    <ul>
+                        <li><img src="../Images/icons/slack.png" alt="slack"></li>
+                        <li><img src="../Images/icons/whatsapp.png" alt="whatsapp"></li>
+                        <li><img src="../Images/icons/facebook.png" alt="facebook"></li>
+                        <li><img src="../Images/icons/twitter.png" alt="twitter"></li>
+                        <li><img src="../Images/icons/instagram.png" alt="instagram"></li>
+                        <li><img src="../Images/icons/linkedin.png" alt="linkedin"></li>
+                        <li><img src="../Images/icons/youtube.png" alt="youtube"></li>
+                    </ul>
+                </figure>
+            </figure>
+            <section class="footer-information">
+                <ul>
+                    <li>
+                        <h4>COURSES</h4>
+                    </li>
+                    <li>Pre-Programming</li>
+                    <li>Building your first Website</li>
+                    <li>Interpersonal Skills at Work</li>
+                    <li>Front-End Frameworks</li>
+                    <li>Quality Assurance Fundamentals</li>
+                    <li>First steps on Big Data</li>
+                    <li>Introduction to Cloud Computing</li>
+                    <li>CyberSecurity for Begginers</li>
+                </ul>
+                <ul>
+                    <li>
+                        <h4>Language</h4>
+                    </li>
+                    <li>HTML5 & CSS</li>
+                    <li>JavaScript</li>
+                    <li>SQL</li>
+                    <li>TypeScript</li>
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>C++</li>
+                    <li>PHP</li>
+                </ul>
+                <ul>
+                    <li>
+                        <h4>US</h4>
+                    </li>
+                    <li>Equipment</li>
+                    <li>Testimonials</li>
+                    <li>Teachers</li>
+                    <li>Our history</li>
+                    <li>Become a teacher</li>
+                    <li>Work with us</li>
+                    <li>Press</li>
+                    <li>Terms of use</li>
+                </ul>
+                <ul>
+                    <li>
+                        <h4>Universities</h4>
+                    </li>
+                    <li>Stanford University</li>
+                    <li>Massachusetts Institute of Technology</li>
+                    <li>University of California, Los Angeles</li>
+                    <li>Cornell University</li>
+                    <li>Carnegie Mellon University</li>
+                    <li>Princeton University</li>
+                    <li>University of California, Berkeley</li>
+                    <li>National University of the Center of the Buenos Aires Province</li>
+                </ul>
+            </section>
+            <p class="copyright">TPE WEB TUDAI | Magalí Menchón - Braian Vogrič | LearnIT © 2020</p>
+        </footer>
+</body>
+
+</html>

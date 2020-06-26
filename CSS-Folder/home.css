@@ -1,0 +1,495 @@
+body{
+  margin: 0;
+}
+
+.gral-container {
+  background-image: url(../Images/home/background-home.jpeg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+/*  HEADER-------------------------------------------------------*/
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+figure{
+  margin:0;
+}
+
+.logo{
+  height: 5.875rem;
+}
+
+.logo img {
+  width: 5.125rem;
+  height: 4.875rem;
+  margin-top: 0.4rem;
+}
+
+.hide-bar{
+  display: none;
+}
+
+.menu-button{
+  background: none;
+  border: 0;
+  margin-left: 34vh;
+  margin-right: 2vh;
+  margin-top: 1rem;
+}
+
+.menu-button:focus{
+    outline: none;
+}
+
+.menu-button img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+nav ul{
+  font-family: Arial, Helvetica, sans-serif;
+  text-shadow: 1px 2px black;
+  list-style: none;
+  font-size: 3.5vh;
+  text-align: end;
+  margin-right: 3vh;
+  margin-top: 0;
+}
+
+nav li a {
+  text-decoration: none;
+  color: white;
+}
+
+/*  GREETING WELCOME-------------------------------------------------------*/
+
+ .greeting-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1.875rem 1.25rem 2rem 1.25rem;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.greeting-welcome h1 {
+  font-size: 6vh;
+  margin-top: 32vh;
+}
+
+.greeting-welcome p {
+  font-size: 4vh;
+  color: #333333;
+} 
+
+/* HOME-MAIN------------------------------------------------------- */
+
+.home-main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: sans-serif;
+  text-shadow: 0.0625rem 0.125rem white;
+  color: #4e4e4e;
+  background-color: #fafafa;
+}
+
+.home-main h2 {
+  font-size: 2.1rem;
+}
+
+/*WHY LEARN WITH US------------------------------------------------------- */
+
+.why-learn-with-us {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.data-about-us h3 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.why-learn-with-us .data-about-us img {
+  margin: 2rem;
+  width: 20%;
+}
+
+/*  INFORMATION OFFERED------------------------------------------------------- */
+
+.information-offered img{
+ width: 95%;
+}
+
+.info-support,
+.info-real-proyect,
+.info-dream-job {
+  margin: 1.5625rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.information-content {
+  font-size: 1rem;
+}
+
+.information-content h3{
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.information-content p{
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.information-offered img {
+  border-color: 0.25rem black;
+}
+
+/*  EXPERIENCES------------------------------------------------------- */
+
+.experiences {
+  text-align: center;
+}
+
+.experiences p {
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-family: serif;
+}
+
+.experience-content {
+  margin: 0 0 4rem 0;
+}
+
+.experiences img {
+  margin: 0.625rem;
+}
+
+/* FREQUENT QUESTIONS-------------------------------------------------------*/
+
+.frequent-questions {
+  padding: 0 2rem 2rem 2rem;
+}
+
+.frequent-questions h4 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 2rem 0 4rem 0;
+}
+
+.frequent-questions h5 {
+  font-size: 1.5rem;
+}
+
+.frequent-questions p {
+  font-size: 1.2rem;
+}
+
+/* FOOTER ------------------------------------------- */
+
+footer {
+  background-color: #313131;
+  font-family: sans-serif;
+}
+
+.logo-learnit {
+  display: flex;
+  justify-content: center;
+}
+
+.logos .logo-learnit img {
+  width: 35%;
+  margin: 1rem;
+}
+
+.socials-icons {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socials-icons ul {
+  width: 26.375rem;
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  padding: 0;
+}
+
+/* FOOTER INFORMATION-------------------------------------------------------*/
+
+.footer-information {
+  border-bottom: 0.0625rem solid white;
+}
+
+.footer-information ul {
+  list-style: none;
+  margin-top: 1.875rem;
+  margin-right: 1.875rem;
+}
+
+.footer-information h4 {
+  margin: 0.625rem 0rem 0rem 0rem;
+}
+
+.footer-information ul li {
+  padding: 0.375rem;
+  font-size: 0.9rem;
+}
+
+.copyright {
+  margin: 0;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.62rem;
+}
+
+/* Media Query Desktop*/
+
+@media only screen and (min-width: 1178px) {
+  
+.gral-container {
+  max-width: 84.375rem;
+  height: 50rem;
+  margin: auto;
+
+  /* flex-box */
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+
+/*  HEADER-------------------------------------------------------*/
+
+.header {
+  background-image: none;
+  width: 100%;
+  height: 2.625rem;
+}
+
+.logo {
+  margin-top: 0.625rem;
+  width: 14.1875rem;
+  height: 9.375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  width: 10.125rem;
+  height: 8.875rem;
+}
+
+.hide-bar{
+  display: flex;
+}
+
+.menu-button {
+  display: none;
+}
+
+nav ul{
+  margin-top: 1.5625rem;
+  font-size: 1.875rem;
+  height: 3.75rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+}
+
+nav li a {
+  display: flex;
+  padding: 2.1875rem;
+  background: none;
+}
+
+/*  GREETING WELCOME-------------------------------------------------------*/
+
+.greeting-welcome {
+  width: 100%;
+  height: 40.5rem;
+  align-items: flex-end;
+  margin: 6.875rem 1.25rem 0rem 0rem;
+}
+
+.greeting-welcome h1 {
+  margin: 0rem;
+  font-size: 4.8125rem;
+  font-family: Arial, Helvetica, sans-serif;
+  text-shadow: 0.0625rem 0.125rem black;
+  color: white;
+}
+
+.greeting-welcome p {
+  width: 43.75rem;
+  font-size: 1.625rem;
+  font-family: Arial, Helvetica, sans-serif;
+  text-shadow: 0.0625rem 0.125rem black;
+  color: #ffeb00;
+}
+
+/* HOME-MAIN------------------------------------------------------- */
+
+.home-main {
+  width: 100%;
+  height: 250rem;
+}
+
+.home-main h2 {
+  font-size: 3.4375rem;
+}
+
+/*WHY LEARN WITH US------------------------------------------------------- */
+
+.why-learn-with-us {
+  margin-top: 7.5rem;
+  margin-bottom: 7.5rem;
+}
+.why-learn-with-us .about-us {
+  display: flex;
+  flex-wrap: wrap;
+  width: 62.5rem;
+  padding-top: 2.0625rem;
+}
+
+.why-learn-with-us .data-about-us {
+  display: flex;
+  width: 25rem;
+  margin: 1.875rem 0rem 1.875rem 6.25rem;
+}
+
+.why-learn-with-us .data-about-us img {
+  margin: 0.625rem;
+}
+
+/*  INFORMATION OFFERED------------------------------------------------------- */
+
+.information-offered {
+  width: 67.25rem;
+  height: 71.875rem;
+}
+
+.info-support,
+.info-real-proyect,
+.info-dream-job {
+  height: 18.75rem;
+  flex-direction: row;
+}
+
+.info-real-proyect {
+  flex-direction: row-reverse;
+}
+
+.information-content {
+  font-size: 1.5625rem;
+  padding: 2.1875rem 3.125rem 0rem 3.125rem;
+}
+
+.information-offered img {
+  border-color: 0.25rem black;
+}
+
+.information-content h3{
+  text-align: inherit;
+}
+
+.information-content p{
+  text-align: inherit;
+}
+
+/*  EXPERIENCES------------------------------------------------------- */
+
+.experiences {
+  margin-bottom: 8.125rem;
+}
+
+.block-experiences {
+  display: flex;
+  justify-content: space-between;
+}
+
+.experiences h2 {
+  width: 100%;
+  margin-bottom: 5.625rem;
+}
+
+.experiences p {
+  height: 15.625rem;
+  width: 15.625rem;
+  font-size: 1.5625rem;
+}
+
+/* FREQUENT QUESTIONS-------------------------------------------------------*/
+
+.frequent-questions {
+  width: 62.5rem;
+}
+
+.frequent-questions h4 {
+  font-size: 3.125rem;
+}
+
+.frequent-questions h5 {
+  width: 100%;
+  font-size: 1.875rem;
+  margin: 2.5rem 0rem;
+}
+
+.frequent-questions p {
+  font-size: 1.5625rem;
+}
+
+/* FOOTER ------------------------------------------- */
+
+footer {
+  width: 100%;
+}
+
+.logos {
+  width: 100%;
+  height: 6.75rem;
+  display: flex;
+}
+
+.logos .logo-learnit img {
+  width: 8.8125rem;
+  height: 8.125rem;
+}
+
+.socials-icons {
+  width: 77%;
+}
+
+.socials-icons ul {
+  width: 24.375rem;
+  justify-content: space-around;
+}
+
+/* FOOTER INFORMATION-------------------------------------------------------*/
+
+.footer-information {
+  width: 100%;
+  margin-top: 1.25rem 0rem 0.625rem 0rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.copyright {
+  padding: 0 0 0.75rem 0;
+  margin-top: 0.9375rem;
+  font-size: 0.75rem;
+}
+
+}

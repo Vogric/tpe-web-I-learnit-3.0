@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnIT - Courses</title>
+    <link rel="stylesheet" href="../CSS-Folder/home.css">
+    <link rel="stylesheet" href="../CSS-Folder/courses.css">
+    <script src="../JS-Folder/deployment-menu.js"></script>
+    <script src="../JS-Folder/table.js"></script>
+    <link rel="icon" href="../Images/logo-learnit.png" type="image/png">
+</head>
+
+<body>
+    <div class="gral-container">
+        <header class="header">
+            <figure class="logo"><img src="../Images/logo-learnit.png" alt=""></figure>
+            <nav>
+                <button id="menu-button" class="menu-button"><img src="../Images/icons/menu-icon.png"
+                        alt="menu-icon"></button>
+                <ul id="menu-bar" class="hide-bar">
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="../HTML-Folder/courses.html">Courses</a>
+                    </li>
+                    <li>
+                        <a href="../HTML-Folder/learn-now.html">Learn now</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="courses-main">
+            <header class="courses-presentation">
+                <h1>Not sure where to <span>begin?</span></h1>
+                <p>We'll show you <span>what</span> to learn</p>
+            </header>
+            <section class="offered-courses">
+                <figure class="course">
+                    <img src="../Images/courses/illustrations/pre-programming.jpg" alt="Pre-Programming">
+                    <figcaption>
+                        <h2>Pre-Programming</h2>
+                    </figcaption>
+                </figure>
+                <figure class="course">
+                    <img src="../Images/courses/illustrations/building-your-first-website.jpg"
+                        alt="Building your first Website">
+                    <figcaption>
+                        <h2>Building your first Website</h2>
+                    </figcaption>
+                </figure>
+                <figure class="course">
+                    <img src="../Images/courses/illustrations/communication-and-interpersonal-skills-at-work.jpg"
+                        alt="Communication and Interpersonal Skills at Work">
+                    <figcaption>
+                        <h2>Interpersonal Skills at Work</h2>
+                    </figcaption>
+                </figure>
+                <figure class="course">
+                    <img src="../Images/courses/illustrations/front-end-frameworks.jpg" alt="Front-End Frameworks">
+                    <figcaption>
+                        <h2>Front-End Frameworks</h2>
+                    </figcaption>
+                </figure>
+                <figure class="course">
+                    <img src="../Images/courses/illustrations/quality-assurance-fundamentals.jpg"
+                        alt="Software Testing and QA Fundamentals">
+                    <figcaption>
+                        <h2>Quality Assurance Fundamentals</h2>
+                    </figcaption>
+                </figure>
+                <figure class="course">
+                    <img src="../Images/courses/illustrations/first-steps-on-big-data.jpg"
+                        alt="First steps on Big Data">
+                    <figcaption>
+                        <h2>First steps on Big Data</h2>
+                    </figcaption>
+                </figure>
+                <figure class="course">
+                    <img src="../Images/courses/illustrations/introduction-to-cloud-computing.jpg"
+                        alt="Introduction to Cloud Computing">
+                    <figcaption>
+                        <h2>Introduction to Cloud Computing</h2>
+                    </figcaption>
+                </figure>
+                <figure class="course">
+                    <img src="../Images/courses/illustrations/cyber-security-for-begginers.jpg"
+                        alt="CyberSecurity for Begginers">
+                    <figcaption>
+                        <h2>CyberSecurity for Begginers</h2>
+                    </figcaption>
+                </figure>
+            </section>
+            <section class="general-information-courses">
+                <h1>General Information</h1>
+                <ul>
+                    <li>
+                        <h2><img src="../images/courses/icons/verified-certificated-icon.png" alt=""> Verified
+                            Certificate
+                        </h2>
+                        <p>Get a certificate upon completion</p>
+                    </li>
+                    <li>
+                        <h2><img src="../images/courses/icons/100-online-courses-icon.png" alt="">100% online courses
+                        </h2>
+                        <p>Start right away and learn at your own pace</p>
+                    </li>
+                    <li>
+                        <h2><img src="../images/courses/icons/flexible-schedule-icon.png" alt="">Flexible schedule</h2>
+                        <p>Set and maintain flexible delivery dates</p>
+                    </li>
+                    <li>
+                        <h2><img src="../images/courses/icons/beginner-level-icon.png" alt="">Beginner level</h2>
+                        <p>No previous experience required</p>
+                    </li>
+                    <li>
+                        <h2><img src="../images/courses/icons/subtitled-classes-icon.png" alt="">Subtitled classes</h2>
+                        <p>English, Spanish, Portuguese, Arabic</p>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <form class="complete-table">
+                    <h3>Complete the table here:</h3>
+                    <label>Course:</label>
+                    <input id="course" type="text">
+                    <label>Duration:</label>
+                    <input id="duration" type="text">
+                    <label>Subject:</label>
+                    <input id="subject" type="text">
+                    <label>Topics:</label>
+                    <input id="topics" type="text">
+                    <input class="btn-table-form" id="button-add" type="button" value="Add a new item">
+                    <input class="btn-table-form" id="button-add-three" type="button" value="Add three items">
+                    <input class="btn-deletedAll" id="button-deleted" type="button" value="Deleted all">
+                </form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>COURSE</th>
+                            <th>DURATION</th>
+                            <th>SUBJECT</th>
+                            <th>TOPICS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

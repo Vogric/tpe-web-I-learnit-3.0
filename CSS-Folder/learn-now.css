@@ -1,0 +1,176 @@
+.gral-container {
+  background-image: url(../Images/courses/background-courses.jpg);
+  background-size: cover;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* LEARN NOW MAIN------------------------------------ */
+
+.learn-now-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.learn-now-main span {
+  color: #ffeb00;
+}
+
+h1 {
+  margin-top: 3.375rem;
+  font-size: 2.5rem;
+  font-family: sans-serif;
+  text-align: center;
+  text-shadow: 0.0625rem 0.125rem black;
+}
+
+/* INSCRIPTION------------------------------------ */
+
+.inscription {
+  width: 100%;
+  font-family: sans-serif;
+  text-shadow: 0.0625rem 0.125rem black;
+}
+
+.checkbox-courses {
+  background-image: url(../Images/learn-now/register-image.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.checkbox-courses ul {
+  list-style: none;
+  font-size: 0.9rem;
+  margin-top: 0.625rem;
+  margin-bottom: 0rem;
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
+}
+
+.checkbox-courses ul h2 {
+  font-size: 3rem;
+  text-shadow: 0.25rem 0.1875rem black;
+  margin-bottom: 2.1875rem;
+}
+
+.checkbox-courses li {
+  margin-top: 1.5625rem;
+  padding: 0.4375rem;
+  background-color: #333333;
+  width: fit-content;
+  color: #ffe500;
+}
+
+input:checked {
+  height: 1.5625rem;
+  width: 1.5625rem;
+  box-shadow: 0 0 0 0.1875rem;
+  color: #ffe500;
+}
+
+/* FORM------------------------------------*/
+
+.form {
+  display: flex;
+  justify-content: center;
+  background-color: #332f23;
+}
+
+form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+}
+
+form h2 {
+  font-size: 1.5625rem;
+  color: #ffe500;
+  text-align: center;
+}
+
+form label {
+  margin-top: 0.875rem;
+}
+
+form input,
+select,
+textarea {
+  font-size: 1rem;
+  padding: 0.1875rem 0.25rem 0.125rem 0.25rem;
+  background-color: #e2e2e2;
+  color: #464646;
+}
+
+textarea {
+  font-family: sans-serif;
+}
+
+.form-validation {
+  text-align: center;
+}
+
+.register {
+  background-color: #009688eb;
+  width: 80%;
+  height: 2.25rem;
+  font-size: 1.375rem;
+  color: white;
+  margin-bottom: 0.6875rem;
+}
+
+/* Media Query Desktop*/
+
+@media only screen and (min-width: 1178px) {
+
+.gral-container {
+  height: 102.9375rem;
+}
+
+/* LEARN NOW MAIN------------------------------------ */
+
+.learn-now-main {
+  margin-top: 1.875rem;
+  width: 100%;
+  height: 60.4375rem;
+  margin-bottom: 9.375rem;
+}
+
+h1 {
+  width: 100%;
+  height: 3.125rem;
+  margin-top: 2.375rem;
+}
+
+/* INSCRIPTION------------------------------------ */
+
+.inscription {
+  width: 62.5rem;
+  height: 50rem;
+  display: flex;
+}
+
+.checkbox-courses {
+  width: 31.25rem;
+}
+
+.checkbox-courses ul {
+  font-size: 1.25rem;
+}
+
+.checkbox-courses ul h2 {
+  font-size: 4.25rem;
+}
+
+/* FORM------------------------------------*/
+
+.form {
+  width: 31.25rem;
+}
+
+form {
+  width: 73%;
+}
+
+}
