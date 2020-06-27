@@ -64,7 +64,7 @@
 
 /*GENERAL INFORMATION OF COURSES ------------------------------------*/
 
- .general-information-courses {
+.general-information-courses {
   margin-top: 1.4375rem;
   font-size: 1.125rem;
   font-family: sans-serif;
@@ -93,7 +93,7 @@
 
 /*TABLE-----------------------------------------------*/
 
-.complete-table{
+.complete-table {
   padding-left: 4vh;
   padding-right: 7vh;
   font-size: 3vh;
@@ -101,22 +101,22 @@
   text-align: center;
 }
 
-.complete-table input{
+.complete-table input {
   width: 100%;
   margin: 1vh;
 }
 
-.btn-table-form{
+.btn-table-form {
   font-size: 2.5vh;
   color: white;
-  background-color:#7700ff;
+  background-color: #7700ff;
   padding: 1vh;
 }
 
-.btn-deletedAll{
+.btn-deletedAll {
   font-size: 2.5vh;
   color: white;
-  background-color:#0c0414;
+  background-color: #0c0414;
   padding: 1vh;
 }
 
@@ -125,85 +125,89 @@ table {
   padding-bottom: 2vw;
 }
 
-table th, table td {
+table th,
+table td {
   padding: 1vh;
   font-size: 2vh;
   font-family: sans-serif;
   background-color: #a35dff54;
 }
 
-.change-row{
+.change-row {
   background-color: rgb(253, 236, 0);
   color: black;
+}
+
+button #5ef7a8bc88ba820004408f87 {
+  background-color: red;
 }
 
 /* Media Query Desktop*/
 
 @media only screen and (min-width: 1176px) {
-  
-.gral-container {
-  height: auto;
-}
+  .gral-container {
+    height: auto;
+  }
 
-/*COURSES MAIN-------------------------------------------------------*/
+  /*COURSES MAIN-------------------------------------------------------*/
 
-.courses-main{
-  margin-top: 1.875rem;
-}
+  .courses-main {
+    margin-top: 1.875rem;
+  }
 
-/* COURSES PRESENTATION-------------------------------------------------------*/
+  /* COURSES PRESENTATION-------------------------------------------------------*/
 
-.courses-presentation {
-  margin: 2.3125rem 1.25rem 0.625rem 1.25rem;
-}
+  .courses-presentation {
+    margin: 2.3125rem 1.25rem 0.625rem 1.25rem;
+  }
 
-.courses-presentation h1,
-.courses-presentation p {
-  text-align: center;
-}
+  .courses-presentation h1,
+  .courses-presentation p {
+    text-align: center;
+  }
 
-/* OFFERED COURSES-------------------------------------------------------*/
+  /* OFFERED COURSES-------------------------------------------------------*/
 
-.offered-courses {
-  width: 100%;
-}
+  .offered-courses {
+    width: 100%;
+  }
 
-.offered-courses img {
-  width: 11.1875rem;
-  height: 11.125rem;
- }
+  .offered-courses img {
+    width: 11.1875rem;
+    height: 11.125rem;
+  }
 
-/*GENERAL INFORMATION OF COURSES ------------------------------------*/
+  /*GENERAL INFORMATION OF COURSES ------------------------------------*/
 
-.general-information-courses {
-  width: 100%;
-}
+  .general-information-courses {
+    width: 100%;
+  }
 
-.general-information-courses h1 {
-  font-size: 2.75rem;
-}
+  .general-information-courses h1 {
+    font-size: 2.75rem;
+  }
 
-.general-information-courses h2 img {
-  padding-right: 1rem;
-}
+  .general-information-courses h2 img {
+    padding-right: 1rem;
+  }
 
-.general-information-courses li {
-  margin-top: 1.25rem;
-}
+  .general-information-courses li {
+    margin-top: 1.25rem;
+  }
 
-/*TABLE-----------------------------------------------*/
+  /*TABLE-----------------------------------------------*/
 
-.complete-table input{
-  width: 15%;
-}
+  .complete-table input {
+    width: 15%;
+  }
 
-.btn-table-form,
-.btn-deletedAll{
-  font-size: 1rem;
-}
+  .btn-table-form,
+  .btn-deletedAll {
+    font-size: 1rem;
+  }
 
-table th, table td {
-  padding: 0.5625rem;
-}
-
+  table th,
+  table td {
+    padding: 0.5625rem;
+  }
 }
