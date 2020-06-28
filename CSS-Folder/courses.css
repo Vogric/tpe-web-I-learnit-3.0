@@ -111,6 +111,7 @@
   color: white;
   background-color: #7700ff;
   padding: 1vh;
+  font-weight: bold;
 }
 
 .btn-deletedAll {
@@ -118,6 +119,20 @@
   color: white;
   background-color: #0c0414;
   padding: 1vh;
+  font-weight: bold;
+}
+
+h4 {
+  padding-top: 2rem;
+}
+
+.btn-edit {
+  font-size: 2.5vh;
+  color: #5200ff;
+  background-color: rgb(253, 236, 0);
+  padding: 1vh;
+  font-weight: bold;
+  width: 289px;
 }
 
 table {
