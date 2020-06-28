@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch(url, {})
       .then(function (r) {
         if (!r.ok) {
-          alert("No se pudieron traer los datos del servidor");
+          alert("No se pudieron traer los datos del servidor");//veerr
         } else {
           return r.json();
         }
@@ -47,9 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
           idAllItems[index] = item._id;
           index++;
         }
-        //deleteOne(idAllItems);
+        deleteOne(/*idAllItems*/);
         deleteAll(idAllItems);
-        //enviarEjemplos();
+        //enviarEjemplos(); no sirve ma creo
       })
       .catch((e) => {
         console.log(e);
@@ -83,23 +83,90 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
       .then(function () {
-        location.reload();
+        //FORMA 1 sin refresh
+        //tbody.innerHTML = "";
+        //GetData();
+
+        //segunda forma de la 1:
+        //deberia agregar el ultimo al final de la tabla!!!!
+        //AddTable();.......
+
+        //FORMA 2 con refresh
+        location.reload(); //a ver esto luegoooooo
+
       })
       .catch((e) => {
         console.log(e);
       });
   }
+  function editarUno () {
 
-  function deleteAll(idItem) {
+    let id_a_editar = idObjeto.value;
+    let level = nivelEditado.value;
+    let name = nombreEditado.value;
+    let surname = apellidoEditado.value;
+    let email = mailEditado.value;
+    let cellphone = telefonoEditado.value;
+    let perfil = {
+        "thing": {
+            "nivel": level,
+            "nombre": name,
+            "apellido": surname,
+            "mail": email,
+            "telefono": cellphone
+        }
+    };
+    /*if (level === "" || name === "" || surname === "" || email === "" || cellphone === ""){
+        //alertaEdit.innerHTML = "¡Todos los campos deben estar completos!";   
+       // return false;
+    }*/
+    fetch(url + "/"+id_a_editar, {
+        "method": "PUT",
+        "headers": { "Content-Type": "application/json" },
+        "body": JSON.stringify(perfil)
+
+    }).then((r) => {
+        if (!r.ok) {
+            alert("No se pudieron editar los datos correctamente");
+        }
+        return r.json();
+    }).then((/*json*/) => {
+        location.reload();
+    }).catch( () => {
+        console.log("Error");
+    })
+}
+function deleteOne(/*idItem*/) {
+
+  let buttons = document.querySelectorAll('.deleteButtons');
+  console.log(buttons);
+  for (let i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener("click", () => {
+          let idButton = buttons[i].parentNode.parentNode.id;
+          console.log(idButton);
+          fetch(url + "/" + idButton, {
+              "method": "DELETE",
+          })
+          .then(() => {
+              tbody.innerHTML = ""; 
+              GetData();
+          })
+          .catch( ()=> {
+              console.log("Error al remover")
+          })
+      });
+  }
+}
+  function deleteAll(idAllItems) {
     buttonDeletedAll.addEventListener("click", function () {
-      for (let i = 0; i < idItem.length; i++) {
-        fetch(url + "/" + idItem[i], {
+      for (let i = 0; i < idAllItems.length; i++) {
+        fetch(url + "/" + idAllItems[i], {
           method: "DELETE",
         })
           .then(() => {
-            contTabla.innerHTML = "";
+            tbody.innerHTML = "";
           })
-          .catch((err) => {
+          .catch(() => {
             console.log("Error al remover");
           });
       }
@@ -119,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     return item;
   }
-  //MODIFICADOOOOOO
+
   function AddTable(tbody, item) {
     /*create row*/
     let tr = document.createElement("tr");
@@ -139,26 +206,23 @@ document.addEventListener("DOMContentLoaded", () => {
     let td4 = document.createElement("td");
     td4.innerText = item.thing.topics;
     tr.appendChild(td4);
-    /*load delete row button in 5 cell*/
+    /*load edit row button & delete row button in 5 cell*/
     let td5 = document.createElement("td");
+    let editbutton = document.createElement("button");
+    editbutton.innerHTML = "<img src='../Images/icons/edit.png'>";
+    editbutton.className = "editButtons";
     let deletebutton = document.createElement("button");
-    deletebutton.id = item._id;
-    deletebutton.innerHTML = "<img src='../Images/icons/edit.png'>";
+    deletebutton.innerHTML = "<img src='../Images/icons/deleted.png'>";
+    deletebutton.className = "deleteButtons";
+    td5.appendChild(editbutton);
     td5.appendChild(deletebutton);
     tr.appendChild(td5);
-    /*load edit row button in 6 cell*/
-    let td6 = document.createElement("td");
-    let editbutton = document.createElement("button");
-    editbutton.id = item._id;
-    editbutton.innerHTML = "<img src='../Images/icons/deleted.png'>";
-    td6.appendChild(editbutton);
-    tr.appendChild(td6);
-
     /*VERIFICATION*/
     if (td2.innerText == "7 weeks long") {
       tr.classList.add("change-row");
     }
     /*load row in final of tbody*/
+    tr.id = item._id;
     tbody.appendChild(tr);
   }
 });
