@@ -1,20 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
   "use strict";
-  /*-------variables------- */
+  /*-------principal buttons------- */
   let buttonAddItem = document.querySelector("#button-add");
   let buttonAddThreeItems = document.querySelector("#button-add-three");
   let buttonDeletedAll = document.querySelector("#button-deleted");
-
-  let tbody = document.querySelector("#tbody");
-
+  /*-------input add one / three------- */
   let inputCourse = document.querySelector("#course");
   let inputDuration = document.querySelector("#duration");
   let inputSubject = document.querySelector("#subject");
   let inputTopics = document.querySelector("#topics");
+  /*-------edit------- */
+  let buttonSendEdition = document.querySelector("#button-edit");
+  let inputEditCourse = document.querySelector("#course-edit");
+  let inputEditDuration = document.querySelector("#duration-edit");
+  let inputEditSubject = document.querySelector("#subject-edit");
+  let inputEditTopics = document.querySelector("#topics-edit");
+  /*-------filter------- */
+  let buttonFilter = document.querySelector("#button-filter");
+  let inputFilter = document.querySelector("#input-filter");
+  /*-------others------- */
+  let url = "https://web-unicen.herokuapp.com/api/groups/94menchonvogrich/courses";
+  let tbody = document.querySelector("#tbody");
 
-  let url =
-    "https://web-unicen.herokuapp.com/api/groups/94menchonvogrich/courses";
   /*--------- start ------------------ */
+  
   GetData();
 
   /*--------- event and functions buttons ------------------ */
@@ -29,27 +38,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  buttonFilter.addEventListener("click", () => {
+    filterData();
+  })
   /*--------- general functions ------------------ */
   function GetData() {
     fetch(url, {})
-      .then(function (r) {
+      .then( (r) => {
         if (!r.ok) {
           alert("No se pudieron traer los datos del servidor");//veerr
-        } else {
+        }
+        else {
           return r.json();
         }
       })
-      .then(function (json) {
-        let idAllItems = [];
-        let index = 0;
+      .then((json) => {
+        tbody.innerHTML = "";
         for (let item of json.courses) {
           AddTable(tbody, item);
-          idAllItems[index] = item._id;
-          index++;
         }
-        deleteOne(/*idAllItems*/);
-        deleteAll(idAllItems);
-        //enviarEjemplos(); no sirve ma creo
+        deleteOne();
+        deleteAll();
+        editOne();
       })
       .catch((e) => {
         console.log(e);
@@ -82,85 +92,87 @@ document.addEventListener("DOMContentLoaded", () => {
           alert("Error al enviar los datos, intente nuevamente");
         }
       })
-      .then(function () {
+      .then( () =>{
         //FORMA 1 sin refresh
         //tbody.innerHTML = "";
-        //GetData();
+        GetData();
 
         //segunda forma de la 1:
         //deberia agregar el ultimo al final de la tabla!!!!
         //AddTable();.......
 
         //FORMA 2 con refresh
-        location.reload(); //a ver esto luegoooooo
+        //location.reload(); //a ver esto luegoooooo
 
       })
       .catch((e) => {
         console.log(e);
       });
   }
-  function editarUno () {
+  function editOne(/*idAllItems*/) {
 
-    let id_a_editar = idObjeto.value;
-    let level = nivelEditado.value;
-    let name = nombreEditado.value;
-    let surname = apellidoEditado.value;
-    let email = mailEditado.value;
-    let cellphone = telefonoEditado.value;
-    let perfil = {
-        "thing": {
-            "nivel": level,
-            "nombre": name,
-            "apellido": surname,
-            "mail": email,
-            "telefono": cellphone
-        }
-    };
-    /*if (level === "" || name === "" || surname === "" || email === "" || cellphone === ""){
-        //alertaEdit.innerHTML = "¡Todos los campos deben estar completos!";   
-       // return false;
-    }*/
-    fetch(url + "/"+id_a_editar, {
-        "method": "PUT",
-        "headers": { "Content-Type": "application/json" },
-        "body": JSON.stringify(perfil)
+    let buttons = document.querySelectorAll('.editButtons');
 
-    }).then((r) => {
-        if (!r.ok) {
-            alert("No se pudieron editar los datos correctamente");
-        }
-        return r.json();
-    }).then((/*json*/) => {
-        location.reload();
-    }).catch( () => {
-        console.log("Error");
-    })
-}
-function deleteOne(/*idItem*/) {
-
-  let buttons = document.querySelectorAll('.deleteButtons');
-  console.log(buttons);
-  for (let i = 0; i < buttons.length; i++) {
+    for (let i = 0; i < buttons.length; i++) {
       buttons[i].addEventListener("click", () => {
+        document.querySelector('#selectRow').innerHTML = "You choice the row " + (i + 1);
+        buttonSendEdition.addEventListener("click", () => {
+          let item = CreateItem(inputEditCourse.value, inputEditDuration.value, inputEditSubject.value, inputEditTopics.value);
           let idButton = buttons[i].parentNode.parentNode.id;
-          console.log(idButton);
+          /* if (idButton === "") {
+                 alertaEdit.innerHTML = "Debe presionar en la tabla el boton editar de la fila que desea";
+                 return false;
+           }*/
           fetch(url + "/" + idButton, {
-              "method": "DELETE",
+            "method": "PUT",
+            "headers": { "Content-Type": "application/json" },
+            "body": JSON.stringify(item)
           })
-          .then(() => {
-              tbody.innerHTML = ""; 
+            .then((r) => {
+              if (!r.ok) {
+                alert("No se pudieron editar los datos correctamente");
+              }
+            })
+            .then(() => {
+              document.querySelector('#selectRow').innerHTML = "";
+              //tbody.innerHTML = "";
               GetData();
+            })
+            .catch(() => {
+              console.log("Error");
+            })
+        });
+      });
+    }
+  }
+  function deleteOne(/*idItem*/) {
+
+    let buttons = document.querySelectorAll('.deleteButtons');
+    console.log(buttons);
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener("click", () => {
+        let idButton = buttons[i].parentNode.parentNode.id;
+        console.log(idButton);
+        fetch(url + "/" + idButton, {
+          "method": "DELETE",
+        })
+          .then(() => {
+            //tbody.innerHTML = "";
+            GetData();
           })
-          .catch( ()=> {
-              console.log("Error al remover")
+          .catch(() => {
+            console.log("Error al remover")
           })
       });
+    }
   }
-}
-  function deleteAll(idAllItems) {
+  function deleteAll() {
     buttonDeletedAll.addEventListener("click", function () {
-      for (let i = 0; i < idAllItems.length; i++) {
-        fetch(url + "/" + idAllItems[i], {
+      let buttons = document.querySelectorAll('.deleteButtons');
+      for (let i = 0; i < buttons.length; i++) {
+        let idButton = buttons[i].parentNode.parentNode.id;
+        console.log(idButton);
+        fetch(url + "/" + idButton, {
           method: "DELETE",
         })
           .then(() => {
@@ -172,9 +184,33 @@ function deleteOne(/*idItem*/) {
       }
     });
   }
-  //ver
-  //modificadoooo: recordad; para cuando sea agregar uno nuevo, paso los inputs a los parametros
-  //cuando sea para editar paso los EditCourse por parametro.
+  function filterData() {
+    if (inputFilter.value != "ALL") {   
+        tbody.innerHTML = "";
+        fetch(url, {
+        })
+        .then(function (r) {
+          if (!r.ok) {
+            //mensaje de error
+          }
+          else {
+            return r.json();
+          } 
+        })
+        .then( (json) => {
+          tbody.innerHTML = "";
+            for (let item of json.courses) {
+                if (item.thing.subject === inputFilter.value) {
+                  AddTable(tbody, item);
+                }
+            }
+        });
+    }
+    else {
+        tbody.innerHTML = "";
+        GetData();
+    }
+}
   function CreateItem(Course, Duration, Subject, Topics) {
     let item = {
       thing: {

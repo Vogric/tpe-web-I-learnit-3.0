@@ -200,7 +200,7 @@
               Filter the subject of courses here. Write "ALL" to see the
               complete table
             </h4>
-            <input id="" type="text" />
+            <input id="input-filter" type="text" />
             <input
               class="btn-table-form"
               id="button-filter"
@@ -209,14 +209,15 @@
             />
 
             <h4>You can edit the data entered here below if you wish</h4>
+            <h4 id="selectRow"></h4>
             <label>Course:</label>
-            <input id="course" type="text" />
+            <input id="course-edit" type="text" />
             <label>Duration:</label>
-            <input id="duration" type="text" />
+            <input id="duration-edit" type="text" />
             <label>Subject:</label>
-            <input id="subject" type="text" />
+            <input id="subject-edit" type="text" />
             <label>Topics:</label>
-            <input id="topics" type="text" />
+            <input id="topics-edit" type="text" />
             <input
               class="btn-edit"
               id="button-edit"
@@ -231,6 +232,7 @@
                 <th>DURATION</th>
                 <th>SUBJECT</th>
                 <th>TOPICS</th>
+                <th>MOD</th>
               </tr>
             </thead>
             <tbody id="tbody"></tbody>
