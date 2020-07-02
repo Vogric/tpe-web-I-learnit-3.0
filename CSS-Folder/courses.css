@@ -157,6 +157,10 @@ button #5ef7a8bc88ba820004408f87 {
   background-color: red;
 }
 
+.hide-th{
+  display: none;
+}
+
 /* Media Query Desktop*/
 
 @media only screen and (min-width: 1176px) {

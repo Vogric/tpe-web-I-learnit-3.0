@@ -9,63 +9,91 @@ document.addEventListener("DOMContentLoaded", () => {
   let inputDuration = document.querySelector("#duration");
   let inputSubject = document.querySelector("#subject");
   let inputTopics = document.querySelector("#topics");
+  let incompleteAdd = document.querySelector("#incomplete-add");
   /*-------edit------- */
   let buttonSendEdition = document.querySelector("#button-edit");
   let inputEditCourse = document.querySelector("#course-edit");
   let inputEditDuration = document.querySelector("#duration-edit");
   let inputEditSubject = document.querySelector("#subject-edit");
   let inputEditTopics = document.querySelector("#topics-edit");
+  let incompleteEdit = document.querySelector("#incomplete-edit");
+  let idObjeto;
   /*-------filter------- */
   let buttonFilter = document.querySelector("#button-filter");
   let inputFilter = document.querySelector("#input-filter");
+  let incompleteFilter = document.querySelector("#incomplete-filter");
   /*-------others------- */
   let url = "https://web-unicen.herokuapp.com/api/groups/94menchonvogrich/courses";
   let tbody = document.querySelector("#tbody");
-
   /*--------- start ------------------ */
-  
+
   GetData();
 
-  /*--------- event and functions buttons ------------------ */
+  /*--------- events buttons ------------------ */
 
-  buttonAddItem.addEventListener("click", () => {
-    AddToAPI();
-  });
+  buttonFilter.addEventListener("click", filterData);
+
+  buttonAddItem.addEventListener("click", AddToAPI);
 
   buttonAddThreeItems.addEventListener("click", () => {
-    for (let index = 1; index <= 3; index++) {
+    for (let i = 1; i <= 3; i++) {
       AddToAPI();
     }
   });
 
-  buttonFilter.addEventListener("click", () => {
-    filterData();
-  })
+  buttonSendEdition.addEventListener("click", () => {
+    let item = CreateItem(inputEditCourse.value, inputEditDuration.value, inputEditSubject.value, inputEditTopics.value);
+    if (inputEditCourse.value === "" || inputEditDuration.value === "" || inputEditSubject.value === "" || inputEditTopics.value === "") {
+      incompleteEdit.innerHTML = "All inputs must be complete";
+      return false;
+    }
+    fetch(url + "/" + idObjeto, {
+      "method": "PUT",
+      "headers": { "Content-Type": "application/json" },
+      "body": JSON.stringify(item)
+    })
+      .then((r) => {
+        if (!r.ok) {
+          incompleteEdit.innerHTML = "Cannot edit data correctly";
+        }
+      })
+      .then(() => {
+        document.querySelector('#selectRow').innerHTML = "";
+        GetData();
+      })
+      .catch((e) => {
+        console.log(e);
+      })
+  });
 
   /*--------- general functions ------------------ */
 
   function GetData() {
     fetch(url, {})
-    .then( (r) => {
-      if (!r.ok) {
-        alert("No se pudieron traer los datos del servidor");//veerr
-      }
-      else {
-        return r.json();
-      }
-    })
-    .then((json) => {
-      tbody.innerHTML = "";
-      for (let item of json.courses) {
-        AddTable(tbody, item);
-      }
-      deleteOne();
-      deleteAll();
-      editOne();
-    })
-    .catch((e) => {
-      console.log(e);
-    });
+      .then((r) => {
+        if (!r.ok) {
+          alert("No se pudieron traer los datos del servidor");//veerr
+        }
+        else {
+          return r.json();
+        }
+      })
+      .then((json) => {
+        tbody.innerHTML = "";
+        let idAllItems = [];
+        let index = 0;
+        for (let item of json.courses) {
+          AddTable(tbody, item);
+          idAllItems[index] = item._id;
+          index++;
+        }
+        deleteOne(idAllItems);
+        deleteAll(idAllItems);
+        editOne(idAllItems);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
   function AddToAPI() {
@@ -75,125 +103,108 @@ document.addEventListener("DOMContentLoaded", () => {
       inputSubject.value,
       inputTopics.value
     );
+    if (inputCourse.value === "" || inputDuration.value === "" || inputSubject.value === "" || inputTopics.value === "") {
+      incompleteAdd.innerHTML = "All inputs must be complete";
+      return false;
+    }
     fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(item),
     })
-    .then(function (r) {
-      if (!r.ok) {
-        alert("Error al enviar los datos, intente nuevamente");
-      }
-    })
-    .then( () =>{
-      GetData();
-    })
-    .catch((e) => {
-      console.log(e);
-    });
+      .then((r) => {
+        if (!r.ok) {
+          incompleteAdd.innerHTML = "Couldn't send data";
+        }
+      })
+      .then(() => {
+        GetData();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
-  function editOne() {
+  function editOne(idAllItems) {
     let buttons = document.querySelectorAll('.editButtons');
-    let idButton = "";
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].addEventListener("click", () => {
+        idObjeto = idAllItems[i];
         document.querySelector('#selectRow').innerHTML = "You choice the row " + (i + 1);
-        idButton = buttons[i].parentNode.parentNode.id;
-        console.log("id en el for", idButton);
       });
     }
-    buttonSendEdition.addEventListener("click", () => {
-      let item = CreateItem(inputEditCourse.value, inputEditDuration.value, inputEditSubject.value, inputEditTopics.value);
-      console.log("id antes del fetch", idButton);
-      //if(idButton !== ""){
-        fetch(url + "/" + idButton, {
-          "method": "PUT",
-          "headers": { "Content-Type": "application/json" },
-          "body": JSON.stringify(item)
-        })
-        .then((r) => {
-          if (!r.ok) {
-            alert("No se pudieron editar los datos correctamente");
-          }
-        })
-        .then(() => {
-          document.querySelector('#selectRow').innerHTML = "";
-          idButton = "";
-          GetData();
-        })
-        .catch((e) => {
-          console.log(e);
-        })
-     // }
-    });
   }
 
-  function deleteOne() {
+  function deleteOne(idAllItems) {
     let buttons = document.querySelectorAll('.deleteButtons');
-    console.log(buttons);
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].addEventListener("click", () => {
-        let idItem = buttons[i].parentNode.parentNode.id;
-        console.log(idItem);
-        fetch(url + "/" + idItem, {
+        fetch(url + "/" + idAllItems[i], {
           "method": "DELETE",
         })
-        .then(() => {
-          GetData();
-        })
-        .catch((e) => {
-          console.log("Error al remover" + e);
-        })
+          .then((r) => {
+            if (!r.ok) {
+              incompleteEdit.innerHTML = "Cannot delete data correctly";
+            }
+          })
+          .then(() => {
+            GetData();
+          })
+          .catch((e) => {
+            console.log(e);
+          })
       });
     }
   }
 
-  function deleteAll() {
+  function deleteAll(idAllItems) {
     buttonDeletedAll.addEventListener("click", () => {
-      let buttons = document.querySelectorAll('.deleteButtons');
-      for (let i = 0; i < buttons.length; i++) {
-        let idItem = buttons[i].parentNode.parentNode.id;
-        console.log(idItem);
-        fetch(url + "/" + idItem, {
+      for (let index = 0; index < idAllItems.length; index++) {
+        fetch(url + "/" + idAllItems[index], {
           method: "DELETE",
         })
-        .then(() => {
-          tbody.innerHTML = "";
-        })
-        .catch((e) => {
-          console.log("Error al remover" + e);
-        });
+          //ver si es necesario
+          .then((r) => {
+            if (!r.ok) {
+              incompleteEdit.innerHTML = "Cannot delete data correctly";
+            }
+          })
+          .then(() => {
+            tbody.innerHTML = "";
+            idAllItems = [];
+          })
+          .catch((e) => {
+            console.log(e);
+          });
       }
     });
   }
 
   function filterData() {
-    if (inputFilter.value !== "ALL") {   
-        tbody.innerHTML = "";
-        fetch(url, {
-        })
-        .then(function (r) {
+    if (inputFilter.value !== "ALL") {
+      tbody.innerHTML = "";
+      fetch(url, {
+      })
+        .then((r) => {
           if (!r.ok) {
-            //mensaje de error
+            incompleteFilter.innerHTML = "Couldn't filter";
           }
           else {
             return r.json();
-          } 
-        })
-        .then( (json) => {
-          tbody.innerHTML = "";
-          for (let item of json.courses) {
-              if (item.thing.subject === inputFilter.value) {
-                AddTable(tbody, item);
-              }
           }
-          deleteOne();
-          deleteAll();
-          editOne();
+        })
+        .then((json) => {
+          document.querySelector('#selectRow').innerHTML = "";
+          for (let item of json.courses) {
+            if (item.thing.subject === inputFilter.value) {
+              AddTable(tbody, item);
+            }
+          }
+          buttonSendEdition.disabled = true;
         });
     }
     else {
+      buttonSendEdition.disabled = false;
       GetData();
     }
   }
@@ -209,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     return item;
   }
-  
+
   function AddTable(tbody, item) {
     /*create row*/
     let tr = document.createElement("tr");
@@ -231,15 +242,15 @@ document.addEventListener("DOMContentLoaded", () => {
     tr.appendChild(td4);
     /*load edit row button & delete row button in 5 cell*/
     let td5 = document.createElement("td");
-        /*create edit button */
+    /*create edit button */
     let editbutton = document.createElement("button");
     editbutton.innerHTML = "<img src='../Images/icons/edit.png'>";
     editbutton.className = "editButtons";
-        /*create delete button */
+    /*create delete button */
     let deletebutton = document.createElement("button");
     deletebutton.innerHTML = "<img src='../Images/icons/deleted.png'>";
     deletebutton.className = "deleteButtons";
-        /*add buttons to parent node*/
+    /*add buttons to parent node*/
     td5.appendChild(editbutton);
     td5.appendChild(deletebutton);
     tr.appendChild(td5);
@@ -248,7 +259,6 @@ document.addEventListener("DOMContentLoaded", () => {
       tr.classList.add("change-row");
     }
     /*load row in final of tbody*/
-    tr.id = item._id;
     tbody.appendChild(tr);
   }
 });
