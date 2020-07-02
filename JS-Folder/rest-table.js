@@ -59,7 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then(() => {
         document.querySelector('#selectRow').innerHTML = "";
-        GetData();
+        incompleteEdit.innerHTML = "";
+        if (inputFilter.value === "ALL" || inputFilter.value === "") {
+          GetData();
+        }
+        else {
+          filterData();
+        }
       })
       .catch((e) => {
         console.log(e);
@@ -118,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
       .then(() => {
+        incompleteAdd.innerHTML = "";
         GetData();
       })
       .catch((e) => {
@@ -148,7 +155,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           })
           .then(() => {
-            GetData();
+            if (inputFilter.value === "ALL" || inputFilter.value === "") {
+              GetData();
+            }
+            else {
+              filterData();
+            }
           })
           .catch((e) => {
             console.log(e);
@@ -163,7 +175,6 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch(url + "/" + idAllItems[index], {
           method: "DELETE",
         })
-          //ver si es necesario
           .then((r) => {
             if (!r.ok) {
               incompleteEdit.innerHTML = "Cannot delete data correctly";
@@ -195,16 +206,21 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then((json) => {
           document.querySelector('#selectRow').innerHTML = "";
+          let idAllItems = [];
+          let index = 0;
           for (let item of json.courses) {
             if (item.thing.subject === inputFilter.value) {
               AddTable(tbody, item);
+              idAllItems[index] = item._id;
+              index++;
             }
           }
-          buttonSendEdition.disabled = true;
+          deleteOne(idAllItems);
+          deleteAll(idAllItems);
+          editOne(idAllItems);
         });
     }
     else {
-      buttonSendEdition.disabled = false;
       GetData();
     }
   }
